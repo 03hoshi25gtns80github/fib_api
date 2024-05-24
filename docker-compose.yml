@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  fib_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn fib_api.wsgi:application --bind unix:/var/run/gunicorn/gunicorn.sock
+    env_file:
+      - ./.env
+    volumes:
+      # ローカルの作業ディレクトリと仮想環境の作業ディレクトリの対応づけ
+      - gunicorn:/var/run/gunicorn
+      - ./src:/src
+    container_name: gunicorn
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    depends_on:
+      - fib_api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${SSL_CRT_PATH}:/etc/nginx/certs/server.crt
+      - ${SSL_KEY_PATH}:/etc/nginx/certs/server.key
+      - ${SSL_PASS_PATH}:/etc/nginx/certs/server.password
+      - gunicorn:/var/run/gunicorn
+volumes:
+  gunicorn:
+    driver: local
