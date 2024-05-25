@@ -56,6 +56,6 @@ fib_api/
 ### nginx  
 - SSL証明書を配置  
 
-##　変更容易性  
+## 変更容易性  
 - docker-composeで簡単なデプロイ  
 
