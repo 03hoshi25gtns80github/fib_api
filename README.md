@@ -25,12 +25,12 @@ fib_api/
 ├── README.md  
 ├── requirements.txt  
 ├── nginx/certs  
-│   └── server.password  
-└── src/  
-    ├── fib/  
-    ├── fib_api/  
-    ├── front/  
-    └── manage.py  
+│       └── server.password  
+└── src/ 
+        ├── fib/  
+        ├── fib_api/  
+        ├── front/  
+        └── manage.py  
 
 ## 概要 
 ### src/fib  
