@@ -59,3 +59,6 @@ fib_api/
 ## 変更容易性  
 - docker-composeで簡単なデプロイ  
 
+## curl  
+PowerShellのcurlコマンド  
+curl.exe -X GET -H "Content-Type: application/json" "https://fib-api.xyz/fib/?n=99"  
